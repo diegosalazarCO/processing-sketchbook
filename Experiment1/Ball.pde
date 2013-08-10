@@ -10,8 +10,8 @@ class Ball {
     location = new PVector( posx, posy,0 );
     velocity = new PVector( 0, 0);
     time = new PVector( t1, t2 );
-    println(t1);
-    println(t2);
+//    println(t1);
+//    println(t2);
     radius = ballr;
     println("Radio: " + radius);
     c = ballColor;
@@ -26,7 +26,10 @@ class Ball {
     if (location.y > height - radius/2){
       velocity.y *= -0.9;
       location.y = height - radius/2;
-    } else if (location.y < radius/2){
+    } 
+    // Rebotar con las paredes
+    // Bounce with walls
+    else if (location.y < radius/2){
       velocity.y *= -1;
       location.y = radius/2;
     } else if (location.x > height - radius/2) {
@@ -36,6 +39,8 @@ class Ball {
       velocity.x *= -1;
       location.x = radius/2;
     }
+    // Calcular distancia y ángulo para chocar
+    // Calculate distance and angle for collisions
     for (int i = 0; i < id; i++){
 //      float dis = dist( others[i].location.x, others[i].location.y, location.x, location.y);
     float dx = others[i].location.x - location.x;
@@ -60,13 +65,15 @@ class Ball {
       }
     } 
   }
+  // Aumentar tiempo para usar con Perlin Noise
+  // Increase time to use with Perlin Noise
   void increaseTime(){
     time.x += 0.002;
     time.y += 0.002;
   }
   void move(){
     velocity.limit(10);
-    println(velocity.y);
+//    println(velocity.y);
     if (gravityOn){
       location.add(velocity);
       velocity.y += gravity;
