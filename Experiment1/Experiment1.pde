@@ -2,7 +2,7 @@ import processing.opengl.*;
 
 int numBalls = 3;
 float gravity = 0.1;
-boolean gravityOn = false;
+
 // Inicializar arreglo de objetos ( Figura y Bola)
 // Initialize array of objects ( Figure and Ball)
 Figure[] spheres = new Figure[2];
